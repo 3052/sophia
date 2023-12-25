@@ -24,7 +24,7 @@ func (b *SampleTableBox) Decode(r io.Reader) error {
       }
       size := head.BoxPayload()
       switch head.Type() {
-      case "stco", "stsc", "stsz", "stts":
+      case "sgpd", "stco", "stsc", "stsz", "stts":
          value := Box{Header: head}
          value.Payload = make([]byte, size)
          _, err := r.Read(value.Payload)

@@ -46,7 +46,7 @@ func (b *TrackFragmentBox) Decode(r io.Reader) error {
          }
          b.Boxes = append(b.Boxes, value)
       default:
-         return fmt.Errorf("%q", head.RawType)
+         return fmt.Errorf("traf %q", head.RawType)
       }
    }
 }
