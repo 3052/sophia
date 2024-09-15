@@ -119,8 +119,8 @@ func (b *Box) Append(buf []byte) ([]byte, error) {
          return nil, err
       }
    }
-   for _, sam := range b.Sample {
-      buf, err = sam.Append(buf)
+   for _, value := range b.Sample {
+      buf, err = value.Append(buf)
       if err != nil {
          return nil, err
       }
@@ -151,14 +151,14 @@ func (b *Box) Read(buf []byte) error {
       ns += n
    }
    b.Sample = make([]Sample, b.SampleCount)
-   for i, sam := range b.Sample {
-      sam.box = b
-      n, err = sam.Decode(buf[ns:])
+   for i, value := range b.Sample {
+      value.box = b
+      n, err = value.Decode(buf[ns:])
       if err != nil {
          return err
       }
       ns += n
-      b.Sample[i] = sam
+      b.Sample[i] = value
    }
    return nil
 }
